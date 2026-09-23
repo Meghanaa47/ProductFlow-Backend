@@ -1,5 +1,4 @@
 package com.product.controller;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import com.product.model.Product;
 import com.product.service.productservice;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/product")
 public class productcontroller {
 
     @Autowired
     private productservice service;
-
+    
+    @GetMapping("/")
+    public String home() {
+        return "ProductFlow Backend Running";
+    } 
+    
     @GetMapping("/hello")
     public ResponseEntity<String> greet() {
         return ResponseEntity.ok("Hello Meghana");
