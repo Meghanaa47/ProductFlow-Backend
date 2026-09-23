@@ -1,49 +1,59 @@
-# Spring Boot Product API (JPQL + MySQL)
+# ProductFlow – Spring Boot Product Management API
 
 ## 🚀 Overview
 
-This project is a RESTful API built using Spring Boot and Spring Data JPA. It demonstrates CRUD operations along with advanced JPQL queries such as filtering, searching, aggregation, and bulk operations.
+ProductFlow is a RESTful Product Management API built using **Java, Spring Boot, Spring Data JPA, and MySQL**.
+
+The project demonstrates real-world backend development concepts including CRUD operations, REST APIs, JPQL queries, searching, filtering, aggregation, subqueries, and bulk operations.
+
+The backend is designed as the API layer for a full-stack Product Management System.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* Java
+* Java 17
 * Spring Boot
-* Spring Data JPA (Hibernate)
+* Spring Data JPA
+* Hibernate
 * MySQL
+* JPQL
+* REST APIs
 * Postman
+* Maven
 
 ---
 
 ## 📌 Features
 
-* Add single & multiple products
-* Get all products / product by ID
-* Update & delete product
-* Search products by keyword (name/category)
+* Add a single product
+* Add multiple products
+* Get all products
+* Get product by ID
+* Update product
+* Delete product
+* Search products by name or category
 * Filter products by price range
-* Category + price filtering
-* Update price using JPQL
-* Get highest price product (subquery)
-* Count products by category (GROUP BY)
+* Filter products by category and price
+* Update product price
+* Find the highest-priced product
+* Count products by category
+* CORS support for frontend integration
 
 ---
 
-## 🗄️ Database Setup (MySQL)
+## 🗄️ Database Setup
 
-### 1️⃣ Create Database
+### 1. Create Database
 
 ```sql
-CREATE DATABASE product_db;
+CREATE DATABASE productdb;
 ```
 
----
-
-### 2️⃣ Configure application.properties
+### 2. Configure `application.properties`
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/product_db
+spring.datasource.url=jdbc:mysql://localhost:3306/productdb
 spring.datasource.username=your_username
 spring.datasource.password=your_password
 
@@ -52,88 +62,102 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 ```
 
----
+> Do not commit your actual database password to GitHub.
 
-### 3️⃣ Run the Application
+### 3. Run the Application
 
-* Start your MySQL server
-* Run the Spring Boot application
-* Tables will be created automatically
+1. Start MySQL.
+2. Configure your database credentials.
+3. Run the Spring Boot application.
+4. The application starts on port `8081`.
+
+Base URL:
+
+`http://localhost:8081/product`
 
 ---
 
 ## 🔗 API Endpoints
 
-### Add Product
-
-POST /product/add
-
-### Add Multiple Products
-
-POST /product/addAll
-
-### Get All Products
-
-GET /product/allproducts
-
-### Get Product By ID
-
-GET /product/id/{id}
-
-### Update Product
-
-PUT /product/update/{id}
-
-### Delete Product
-
-DELETE /product/delete/{id}
-
-### Search Products
-
-GET /product/search?keyword=pen
-
-### Filter by Price Range
-
-GET /product/filter?min=100&max=5000
-
-### Category + Price Filter
-
-GET /product/category-price?category=electronics&price=1000
-
-### Update Price
-
-PUT /product/update-price?id=1&price=2000
-
-### Get Highest Price Product
-
-GET /product/highpriceproduct
-
-### Count by Category
-
-GET /product/countbycategory
+| Method | Endpoint                                                  | Description                  |
+| ------ | --------------------------------------------------------- | ---------------------------- |
+| POST   | `/product/add`                                            | Add a product                |
+| POST   | `/product/addAll`                                         | Add multiple products        |
+| GET    | `/product/allproducts`                                    | Get all products             |
+| GET    | `/product/id/{id}`                                        | Get product by ID            |
+| PUT    | `/product/update/{id}`                                    | Update a product             |
+| DELETE | `/product/delete/{id}`                                    | Delete a product             |
+| GET    | `/product/search?keyword=pen`                             | Search by name or category   |
+| GET    | `/product/filter?min=100&max=5000`                        | Filter by price range        |
+| GET    | `/product/category-price?category=electronics&price=1000` | Filter by category and price |
+| GET    | `/product/update-price?id=1&price=2000`                   | Update product price         |
+| GET    | `/product/highpriceproduct`                               | Get highest-priced product   |
+| GET    | `/product/countbycategory`                                | Count products by category   |
+| GET    | `/product/hello`                                          | Test API endpoint            |
 
 ---
 
 ## 💡 Concepts Covered
 
-* JPQL Queries
-* @Query Annotation
-* Named Parameters
-* Aggregation (GROUP BY)
+* Spring Boot
+* REST API development
+* Spring Data JPA
+* Hibernate
+* JPQL
+* `@Query`
+* Named parameters
+* CRUD operations
+* Search and filtering
+* Aggregation using `GROUP BY`
 * Subqueries
-* Bulk Operations
-* REST API Design
+* Bulk update operations
+* Exception handling
+* CORS configuration
+
+---
+
+## 📂 Project Structure
+
+```text
+src
+└── main
+    ├── java
+    │   └── com.product
+    │       ├── controller
+    │       ├── model
+    │       ├── repo
+    │       ├── service
+    │       └── ProductAppApplication.java
+    │
+    └── resources
+        └── application.properties
+```
+
+---
+
+## 🧪 API Testing
+
+The REST APIs can be tested using **Postman**.
+
+Example:
+
+```text
+GET http://localhost:8081/product/allproducts
+```
 
 ---
 
 ## ⚠️ Notes
 
-* Ensure MySQL is running before starting the application
-* Update database credentials in application.properties
-* Use Postman to test APIs
+* MySQL must be running before starting the application.
+* Update the database username and password in `application.properties`.
+* Do not commit real database credentials.
+* The frontend will be integrated separately.
 
 ---
 
 ## 👩‍💻 Author
 
-Devi Kontham
+**Devi Kontham**
+
+B.Tech Computer Science Engineering
